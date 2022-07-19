@@ -9,15 +9,15 @@ The workflow also provides the ability to quickly see your __recently viewed pag
 
 ![img](https://github.com/wrjlewis/notion-search-alfred-workflow/blob/31d36ee9e75c343045f2a1f313b03373669a7730/notion-demo.gif)
 
-## Workflow Variables
+## User Configuration
 
-- `cookie`: Needed for your Notion token.
-- `notionSpaceId`: Your organisation identifier. 
-- `isNavigableOnly`: Defaults to False. This settings allows you to search objects within a page, ie notion objects that cannot be found through the left hand side navigation pane. Setting to True only returns results that can be found through the left hand side navigation pane, but removes subtitles from Alred search results. 
-- `useDesktopClient`: Defaults to False. Determines whether to open Notion links in the desktop client rather than the web app.
-- `enableIcons`: Defaults to True. This toggles support for Notion icons to be shown natively in Alfred search results, for a better design/UX experience. Custom Notion icons are downloaded on demand.
-- `iconCacheDays`: Defaults to the recommended value of 365 days for the best performance. Defines the number of days to cache custom icons. Min 0, max 365.
-- `showRecentlyViewedPages`: Defaults to True. This toggle determines if recently viewed pages should be shown when there is no query provided by the user and the user id is present in the supplied cookie (user id is needed for the api call to show recently viewed pages).
+- `Cookie`: Needed for your Notion token. 
+- `Space ID`: Your organisation identifier.
+- `Navigable Only`: Defaults to False. Setting to false allows you to search objects within a page, ie notion objects that cannot be found through the left hand side navigation pane.
+- `Use Desktop Client`: Defaults to False. Determines whether to open Notion links in the desktop client rather than the web app.
+- `Enable Icons`: Defaults to True. This toggles support for Notion icons to be shown natively in Alfred search results, for a better design/UX experience. Custom Notion icons are downloaded on demand and cached.
+- `Show Recently Viewed`: Defaults to True. This toggle determines if recently viewed pages should be shown when there is no query provided by the user and the user id is present in the supplied cookie (user id is needed for the api call to show recently viewed pages).
+- `Icon Cache Days`: Defaults to the recommended value of 365 days for the best performance. Defines the number of days to cache icons and images. Min 0, max 365.
 
 ## Install Steps
 
@@ -31,7 +31,7 @@ Install cairosvg which will allow svg icons to be shown in Alfred search results
 
 I recommend using chrome to retrieve these values. If you can only use safari you can copy the 'token_v2' value by following the equivalent steps above and populating the cookie env variable in Alfred so it looks like this `token_v2=XXXXXXXXXXXX`.
 
-Visit the Notion webapp and use your browser developer tools to see the network requests being made when you type in anything to the quick find search bar. 
+Visit the Notion webapp and use your browser developer tools to see the network requests being made when you type in anything to the quick find search bar.
 
 Here you'll see a request called `search`, check the request headers to copy the `cookie` value and check the request payload to copy your `notionSpaceId`.
 

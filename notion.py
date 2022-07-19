@@ -33,36 +33,12 @@ bakedCookies = {}
 for key, morsel in bakedCookie.items():
     bakedCookies[key] = morsel.value
 
-# get useDesktopClient env variable and convert to boolean for use later, default to false
-useDesktopClient = os.environ['useDesktopClient']
-if (useDesktopClient == 'true') | (useDesktopClient == 'True') | (useDesktopClient == 'TRUE'):
-    useDesktopClient = True
-else:
-    useDesktopClient = False
-
-# get isNavigableOnly env variable and convert to boolean for use later, default to true
-isNavigableOnly = os.environ['isNavigableOnly']
-if (isNavigableOnly == 'false') | (isNavigableOnly == 'False') | (isNavigableOnly == 'FALSE'):
-    isNavigableOnly = False
-else:
-    isNavigableOnly = True
-
-# get enableIcons env variable and convert to boolean for use later, default to true
-enableIcons = os.environ['enableIcons']
-if (enableIcons == 'false') | (enableIcons == 'False') | (enableIcons == 'FALSE'):
-    enableIcons = False
-else:
-    enableIcons = True
-
-# get the number of days to cache custom icons. Min 0, max 365. Defaults to the maximum of 365 days
+# get togglable env variables and convert to boolean for later use
+useDesktopClient = os.environ['useDesktopClient'] == "1"
+isNavigableOnly = os.environ['isNavigableOnly'] == "1"
+enableIcons = os.environ['enableIcons'] == "1"
+showRecentlyViewedPages = os.environ['showRecentlyViewedPages'] == "1"
 iconCacheDays = sorted([0, int(os.environ['iconCacheDays']), 365])[1]
-
-# get showRecentlyViewedPages env variable and convert to boolean for use later, default to true
-showRecentlyViewedPages = os.environ['showRecentlyViewedPages']
-if (showRecentlyViewedPages == 'false') | (showRecentlyViewedPages == 'False') | (showRecentlyViewedPages == 'FALSE'):
-    showRecentlyViewedPages = False
-else:
-    showRecentlyViewedPages = True
 
 exception = ""
 
@@ -334,7 +310,7 @@ else:
                         searchResultObject.icon = None
                         searchResultObject.title = searchResults.recordMap.get('block').get(searchResultObject.id).get(
                             'value').get('format').get('page_icon') + " " + searchResultObject.title
-            
+
             searchResultObject.link = getnotionurl() + searchResultObject.id.replace("-", "")
             searchResultList.append(searchResultObject)
     except Exception as e: 
