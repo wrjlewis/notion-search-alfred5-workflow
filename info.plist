@@ -121,8 +121,8 @@
 				<integer>0</integer>
 				<key>script</key>
 				<string># THESE VARIABLES MUST BE SET. SEE THE ONEUPDATER README FOR AN EXPLANATION OF EACH.
-readonly remote_info_plist='https://raw.githubusercontent.com/wrjlewis/notion-search-alfred-workflow/master/info.plist'
-readonly workflow_url='wrjlewis/notion-search-alfred-workflow'
+readonly remote_info_plist='https://raw.githubusercontent.com/wrjlewis/notion-search-alfred5-workflow/master/info.plist'
+readonly workflow_url='wrjlewis/notion-search-alfred5-workflow'
 readonly download_type='github_release'
 readonly frequency_check='1'
 
@@ -216,8 +216,8 @@ An Alfred workflow to search Notion.so with instant results
 
 Simply type your keyword into Alfred (default: ns) to see instant search results from Notion that mimic the Quick Find function in the Notion webapp. Selecting a search result takes you to that page in Notion in your default web browser.
 
-Documentation, instructions on workflow variables in the readme here:
-https://github.com/wrjlewis/notion-search-alfred-workflow/
+Documentation, install and instructions here:
+https://github.com/wrjlewis/notion-search-alfred5-workflow/
 
 Forum topic:
 https://www.alfredforum.com/topic/14451-notionso-instant-search-workflow/
@@ -252,32 +252,150 @@ Thanks!</string>
 		</dict>
 	</dict>
 	<key>userconfigurationconfig</key>
-	<array/>
-	<key>variables</key>
-	<dict>
-		<key>cookie</key>
-		<string></string>
-		<key>enableIcons</key>
-		<string>True</string>
-		<key>iconCacheDays</key>
-		<string>365</string>
-		<key>isNavigableOnly</key>
-		<string>False</string>
-		<key>notionSpaceId</key>
-		<string></string>
-		<key>showRecentlyViewedPages</key>
-		<string>True</string>
-		<key>useDesktopClient</key>
-		<string>False</string>
-	</dict>
-	<key>variablesdontexport</key>
 	<array>
-		<string>cookie</string>
-		<string>notionSpaceId</string>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>default</key>
+				<string></string>
+				<key>placeholder</key>
+				<string></string>
+				<key>required</key>
+				<true/>
+				<key>trim</key>
+				<true/>
+			</dict>
+			<key>description</key>
+			<string>Needed for your Notion token.</string>
+			<key>label</key>
+			<string>Cookie</string>
+			<key>type</key>
+			<string>textfield</string>
+			<key>variable</key>
+			<string>cookie</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>default</key>
+				<string></string>
+				<key>placeholder</key>
+				<string></string>
+				<key>required</key>
+				<true/>
+				<key>trim</key>
+				<true/>
+			</dict>
+			<key>description</key>
+			<string>Your organisation identifier.</string>
+			<key>label</key>
+			<string>Space ID</string>
+			<key>type</key>
+			<string>textfield</string>
+			<key>variable</key>
+			<string>notionSpaceId</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>default</key>
+				<false/>
+				<key>required</key>
+				<false/>
+				<key>text</key>
+				<string>If unchecked, allows searching objects within a page</string>
+			</dict>
+			<key>description</key>
+			<string></string>
+			<key>label</key>
+			<string>Navigable Only</string>
+			<key>type</key>
+			<string>checkbox</string>
+			<key>variable</key>
+			<string>isNavigableOnly</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>default</key>
+				<false/>
+				<key>required</key>
+				<false/>
+				<key>text</key>
+				<string>If checked, open links in the desktop app</string>
+			</dict>
+			<key>description</key>
+			<string></string>
+			<key>label</key>
+			<string>Use Desktop Client</string>
+			<key>type</key>
+			<string>checkbox</string>
+			<key>variable</key>
+			<string>useDesktopClient</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>default</key>
+				<true/>
+				<key>required</key>
+				<false/>
+				<key>text</key>
+				<string>Show Notion icons natively in search results</string>
+			</dict>
+			<key>description</key>
+			<string></string>
+			<key>label</key>
+			<string>Enable Icons</string>
+			<key>type</key>
+			<string>checkbox</string>
+			<key>variable</key>
+			<string>enableIcons</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>default</key>
+				<true/>
+				<key>required</key>
+				<false/>
+				<key>text</key>
+				<string>Show recently viewed pages when no query provided</string>
+			</dict>
+			<key>description</key>
+			<string></string>
+			<key>label</key>
+			<string>Show Recently Viewed</string>
+			<key>type</key>
+			<string>checkbox</string>
+			<key>variable</key>
+			<string>showRecentlyViewedPages</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>default</key>
+				<string>365</string>
+				<key>placeholder</key>
+				<string></string>
+				<key>required</key>
+				<true/>
+				<key>trim</key>
+				<true/>
+			</dict>
+			<key>description</key>
+			<string></string>
+			<key>label</key>
+			<string>Icon Cache Days</string>
+			<key>type</key>
+			<string>textfield</string>
+			<key>variable</key>
+			<string>iconCacheDays</string>
+		</dict>
 	</array>
 	<key>version</key>
-	<string>0.5-alfred4</string>
+	<string>0.5-alfred5</string>
 	<key>webaddress</key>
-	<string>https://github.com/wrjlewis/notion-search-alfred-workflow/</string>
+	<string>https://github.com/wrjlewis/notion-search-alfred5-workflow/</string>
 </dict>
 </plist>
