@@ -80,7 +80,7 @@ celcl9aa-c3l7-7504-ca19-0c985e34ll8d
 
 ### Install the Notion Alfred worflow
 
-Download and double click the [latest release](https://github.com/wrjlewis/notion-search-alfred-workflow/releases/latest/download/Notion.Search.alfredworkflow). Follow the steps shown in Alfred to install the workflow.
+Download and double click the [latest release](https://github.com/wrjlewis/notion-search-alfred5-workflow/releases/latest/download/Notion.Search.Alfred.5.alfredworkflow). Follow the steps shown in Alfred to install the workflow.
 
 ### Add these values to the Notion Alfred workflow
 
@@ -108,7 +108,7 @@ and update the directory accordingly.
 - If you experience performance issues or slow searches, you may wish to set `enableIcons` to false. This changes the search results design so icons are in line with the title, it also disables the downloading of any Notion custom icons that you come across whilst searching. 
 
 ## Download:
-https://github.com/wrjlewis/notion-search-alfred-workflow/releases/latest/download/Notion.Search.alfredworkflow
+https://github.com/wrjlewis/notion-search-alfred5-workflow/releases/latest/download/Notion.Search.Alfred.5.alfredworkflow
 
 ## Forum topics:
 https://www.alfredforum.com/topic/14451-notionso-instant-search-workflow/
