@@ -1,9 +1,9 @@
-# notion-search-alfred-workflow
-An Alfred workflow to search Notion.so with instant results
+# notion-search-alfred5-workflow
+An Alfred 5 workflow to search Notion.so with instant results
 
 ![img](https://raw.githubusercontent.com/wrjlewis/notion-search-alfred5-workflow/main/Screenshot.png)
 
-**Alfred 5 version**
+**Alfred 5 version (this one)**
 
 [Github Repository](https://github.com/wrjlewis/notion-search-alfred5-workflow)
 
