@@ -84,9 +84,11 @@ Download and double click the [latest release](https://github.com/wrjlewis/notio
 
 ### Add these values to the Notion Alfred workflow
 
-In the Alfred worfklow in the upper right corner click the `[x]` icon and add the values from above to the corresponding value field
+Alfred should automatically open the 'configure workflow' options panel when you first install the workflow, here you can add the values obtained through the above steps. 
 
-[![img](https://i.imgur.com/Pe6nwey.jpg)](https://i.imgur.com/Pe6nwey.jpg)
+You can also update these values at any time by clicking Configure Workflow..
+
+[![img](https://raw.githubusercontent.com/wrjlewis/notion-search-alfred5-workflow/main/configure.png)](https://raw.githubusercontent.com/wrjlewis/notion-search-alfred5-workflow/main/configure.png)
 
 ## Troubleshooting
 
@@ -104,8 +106,7 @@ and update the directory accordingly.
 
 ## Tips
 
-- If you prefer using the Mac app of Notion, set the `useDesktopClient` environment variable in Alfred to `True`.
-- If you experience performance issues or slow searches, you may wish to set `enableIcons` to false. This changes the search results design so icons are in line with the title, it also disables the downloading of any Notion custom icons that you come across whilst searching. 
+- If you prefer using the Mac app rather than using Notion in your browser, check `Use Desktop Client` under the menu that appears when you click 'Configure Workflow..' as shown above in the [install steps](https://github.com/wrjlewis/notion-search-alfred5-workflow#add-these-values-to-the-notion-alfred-workflow) section.
 
 ## Download:
 https://github.com/wrjlewis/notion-search-alfred5-workflow/releases/latest/download/Notion.Search.Alfred.5.alfredworkflow
