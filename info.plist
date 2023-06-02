@@ -30,7 +30,19 @@
 				<key>vitoclose</key>
 				<false/>
 			</dict>
+			<dict>
+				<key>destinationuid</key>
+				<string>6C10CCF8-8B6B-4F25-A9BD-1134E84378DB</string>
+				<key>modifiers</key>
+				<integer>1048576</integer>
+				<key>modifiersubtext</key>
+				<string>Copy to clipboard</string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
 		</array>
+		<key>FCE03E9D-F992-4B21-9A77-E72D5130DF80</key>
+		<array/>
 	</dict>
 	<key>createdby</key>
 	<string>Will Lewis</string>
@@ -42,6 +54,27 @@
 	<string>Notion Search</string>
 	<key>objects</key>
 	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>browser</key>
+				<string></string>
+				<key>skipqueryencode</key>
+				<false/>
+				<key>skipvarencode</key>
+				<false/>
+				<key>spaces</key>
+				<string></string>
+				<key>url</key>
+				<string></string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.openurl</string>
+			<key>uid</key>
+			<string>FCE03E9D-F992-4B21-9A77-E72D5130DF80</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
 		<dict>
 			<key>config</key>
 			<dict>
@@ -90,27 +123,6 @@
 			<string>7DD3BDE5-A157-42E5-9376-F681FB50A4EE</string>
 			<key>version</key>
 			<integer>3</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>browser</key>
-				<string></string>
-				<key>skipqueryencode</key>
-				<false/>
-				<key>skipvarencode</key>
-				<false/>
-				<key>spaces</key>
-				<string></string>
-				<key>url</key>
-				<string></string>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.openurl</string>
-			<key>uid</key>
-			<string>FCE03E9D-F992-4B21-9A77-E72D5130DF80</string>
-			<key>version</key>
-			<integer>1</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -209,6 +221,25 @@ fi</string>
 			<key>version</key>
 			<integer>2</integer>
 		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>autopaste</key>
+				<false/>
+				<key>clipboardtext</key>
+				<string>{query}</string>
+				<key>ignoredynamicplaceholders</key>
+				<false/>
+				<key>transient</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.output.clipboard</string>
+			<key>uid</key>
+			<string>6C10CCF8-8B6B-4F25-A9BD-1134E84378DB</string>
+			<key>version</key>
+			<integer>3</integer>
+		</dict>
 	</array>
 	<key>readme</key>
 	<string>notion-search-alfred-workflow
@@ -225,12 +256,19 @@ https://www.alfredforum.com/topic/14451-notionso-instant-search-workflow/
 Thanks!</string>
 	<key>uidata</key>
 	<dict>
+		<key>6C10CCF8-8B6B-4F25-A9BD-1134E84378DB</key>
+		<dict>
+			<key>xpos</key>
+			<real>255</real>
+			<key>ypos</key>
+			<real>325</real>
+		</dict>
 		<key>7DD3BDE5-A157-42E5-9376-F681FB50A4EE</key>
 		<dict>
 			<key>xpos</key>
-			<real>50</real>
+			<real>30</real>
 			<key>ypos</key>
-			<real>50</real>
+			<real>100</real>
 		</dict>
 		<key>C4564BA3-C023-400E-AA4E-726CC734C91D</key>
 		<dict>
@@ -393,8 +431,10 @@ Thanks!</string>
 			<string>iconCacheDays</string>
 		</dict>
 	</array>
+	<key>variablesdontexport</key>
+	<array/>
 	<key>version</key>
-	<string>0.5.1-alfred5</string>
+	<string>0.5.2-alfred5</string>
 	<key>webaddress</key>
 	<string>https://github.com/wrjlewis/notion-search-alfred5-workflow/</string>
 </dict>
