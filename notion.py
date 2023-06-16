@@ -65,7 +65,7 @@ def buildnotionsearchquerydata():
     createdtime = {}
     filters["createdTime"] = createdtime
     query["filters"] = filters
-    query["sort"] = "Relevance"
+    query["sort"] = {"field":"relevance"}
     query["source"] = "quick_find_input_change"
 
     jsonData = json.dumps(query)
