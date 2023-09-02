@@ -4,8 +4,6 @@
 <dict>
 	<key>bundleid</key>
 	<string>com.wrjlewis.notion-search</string>
-	<key>category</key>
-	<string>Productivity</string>
 	<key>connections</key>
 	<dict>
 		<key>7DD3BDE5-A157-42E5-9376-F681FB50A4EE</key>
@@ -37,6 +35,19 @@
 				<integer>1048576</integer>
 				<key>modifiersubtext</key>
 				<string>Copy to clipboard</string>
+				<key>vitoclose</key>
+				<false/>
+			</dict>
+		</array>
+		<key>8083D292-1994-456E-AC9C-CCCFDDA3EF47</key>
+		<array>
+			<dict>
+				<key>destinationuid</key>
+				<string>9C705833-7A87-43F9-8C8F-2485909F2D6A</string>
+				<key>modifiers</key>
+				<integer>0</integer>
+				<key>modifiersubtext</key>
+				<string></string>
 				<key>vitoclose</key>
 				<false/>
 			</dict>
@@ -240,9 +251,63 @@ fi</string>
 			<key>version</key>
 			<integer>3</integer>
 		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>browser</key>
+				<string></string>
+				<key>skipqueryencode</key>
+				<false/>
+				<key>skipvarencode</key>
+				<false/>
+				<key>spaces</key>
+				<string></string>
+				<key>url</key>
+				<string>https://notion.new</string>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.action.openurl</string>
+			<key>uid</key>
+			<string>9C705833-7A87-43F9-8C8F-2485909F2D6A</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>argumenttype</key>
+				<integer>2</integer>
+				<key>keyword</key>
+				<string>nsn</string>
+				<key>subtext</key>
+				<string></string>
+				<key>text</key>
+				<string>Open a new page in Notion..</string>
+				<key>withspace</key>
+				<false/>
+			</dict>
+			<key>type</key>
+			<string>alfred.workflow.input.keyword</string>
+			<key>uid</key>
+			<string>8083D292-1994-456E-AC9C-CCCFDDA3EF47</string>
+			<key>version</key>
+			<integer>1</integer>
+		</dict>
 	</array>
 	<key>readme</key>
-	<string>notion-search-alfred-workflow
+	<string>New in 0.6:
+
+- Type ‘nsn’ for the option to quickly open a new page in Notion. Very handy! (Only supports the web app currently)
+
+- https://github.com/wrjlewis/notion-search-alfred-workflow/issues/83 - Fixed a bug that would cause an error and no more results to be displayed, relating to new Notion projects and icons.
+
+- I've added new cairo (SVG icons) instructions for those on apple silicon, to the readme at the projects github page, use at your own risk but they work for me and svg icons now appear in search results.
+
+https://github.com/wrjlewis/notion-search-alfred5-workflow/
+
+--
+
+notion-search-alfred-workflow
 An Alfred workflow to search Notion.so with instant results
 
 Simply type your keyword into Alfred (default: ns) to see instant search results from Notion that mimic the Quick Find function in the Notion webapp. Selecting a search result takes you to that page in Notion in your default web browser.
@@ -269,6 +334,20 @@ Thanks!</string>
 			<real>30</real>
 			<key>ypos</key>
 			<real>100</real>
+		</dict>
+		<key>8083D292-1994-456E-AC9C-CCCFDDA3EF47</key>
+		<dict>
+			<key>xpos</key>
+			<real>65</real>
+			<key>ypos</key>
+			<real>485</real>
+		</dict>
+		<key>9C705833-7A87-43F9-8C8F-2485909F2D6A</key>
+		<dict>
+			<key>xpos</key>
+			<real>255</real>
+			<key>ypos</key>
+			<real>485</real>
 		</dict>
 		<key>C4564BA3-C023-400E-AA4E-726CC734C91D</key>
 		<dict>
@@ -434,7 +513,7 @@ Thanks!</string>
 	<key>variablesdontexport</key>
 	<array/>
 	<key>version</key>
-	<string>0.5.3-alfred5</string>
+	<string>0.6-alfred5</string>
 	<key>webaddress</key>
 	<string>https://github.com/wrjlewis/notion-search-alfred5-workflow/</string>
 </dict>
