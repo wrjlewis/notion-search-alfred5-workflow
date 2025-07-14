@@ -106,7 +106,7 @@
 				<key>runningsubtext</key>
 				<string>Loading…</string>
 				<key>script</key>
-				<string>python3 -B good_code_2.py "$1"</string>
+				<string>python3 -B notion.py "$1"</string>
 				<key>scriptargtype</key>
 				<integer>1</integer>
 				<key>scriptfile</key>
