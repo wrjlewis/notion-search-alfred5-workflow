@@ -3,7 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>bundleid</key>
-	<string>com.wrjlewis.notion-search</string>
+	<string>com.may-june-july.notion-search</string>
+	<key>category</key>
+	<string>Internet</string>
 	<key>connections</key>
 	<dict>
 		<key>7DD3BDE5-A157-42E5-9376-F681FB50A4EE</key>
@@ -11,16 +13,6 @@
 			<dict>
 				<key>destinationuid</key>
 				<string>FCE03E9D-F992-4B21-9A77-E72D5130DF80</string>
-				<key>modifiers</key>
-				<integer>0</integer>
-				<key>modifiersubtext</key>
-				<string></string>
-				<key>vitoclose</key>
-				<false/>
-			</dict>
-			<dict>
-				<key>destinationuid</key>
-				<string>C4564BA3-C023-400E-AA4E-726CC734C91D</string>
 				<key>modifiers</key>
 				<integer>0</integer>
 				<key>modifiersubtext</key>
@@ -56,9 +48,9 @@
 		<array/>
 	</dict>
 	<key>createdby</key>
-	<string>Will Lewis</string>
+	<string>May June July</string>
 	<key>description</key>
-	<string>Instant Notion Search</string>
+	<string>Instant Notion search</string>
 	<key>disabled</key>
 	<false/>
 	<key>name</key>
@@ -102,7 +94,7 @@
 				<key>escaping</key>
 				<integer>68</integer>
 				<key>keyword</key>
-				<string>ns</string>
+				<string>{var:notion_search_keyword}</string>
 				<key>queuedelaycustom</key>
 				<integer>3</integer>
 				<key>queuedelayimmediatelyinitially</key>
@@ -112,19 +104,19 @@
 				<key>queuemode</key>
 				<integer>1</integer>
 				<key>runningsubtext</key>
-				<string>Loading..</string>
+				<string>Loading…</string>
 				<key>script</key>
-				<string>python3 notion.py "{query}"</string>
+				<string>python3 -B good_code_2.py "$1"</string>
 				<key>scriptargtype</key>
-				<integer>0</integer>
+				<integer>1</integer>
 				<key>scriptfile</key>
-				<string>notion.py</string>
+				<string></string>
 				<key>subtext</key>
 				<string></string>
 				<key>title</key>
 				<string>Notion Search</string>
 				<key>type</key>
-				<integer>0</integer>
+				<integer>11</integer>
 				<key>withspace</key>
 				<true/>
 			</dict>
@@ -134,103 +126,6 @@
 			<string>7DD3BDE5-A157-42E5-9376-F681FB50A4EE</string>
 			<key>version</key>
 			<integer>3</integer>
-		</dict>
-		<dict>
-			<key>config</key>
-			<dict>
-				<key>concurrently</key>
-				<false/>
-				<key>escaping</key>
-				<integer>0</integer>
-				<key>script</key>
-				<string># THESE VARIABLES MUST BE SET. SEE THE ONEUPDATER README FOR AN EXPLANATION OF EACH.
-readonly remote_info_plist='https://raw.githubusercontent.com/wrjlewis/notion-search-alfred5-workflow/master/info.plist'
-readonly workflow_url='wrjlewis/notion-search-alfred5-workflow'
-readonly download_type='github_release'
-readonly frequency_check='1'
-
-# FROM HERE ON, CODE SHOULD BE LEFT UNTOUCHED!
-function abort {
-  echo "${1}" &gt;&amp;2
-  exit 1
-}
-
-function url_exists {
-  curl --silent --location --output /dev/null --fail --range 0-0 "${1}"
-}
-
-function notification {
-  local -r notificator="$(find . -type f -name 'notificator')"
-
-  if [[ -f "${notificator}" &amp;&amp; "$(/usr/bin/file --brief --mime-type "${notificator}")" == 'text/x-shellscript' ]]; then
-    "${notificator}" --message "${1}" --title "${alfred_workflow_name}" --subtitle 'A new version is available'
-    return
-  fi
-
-  osascript -e "display notification \"${1}\" with title \"${alfred_workflow_name}\" subtitle \"A new version is available\""
-}
-
-# Local sanity checks
-readonly local_info_plist='info.plist'
-readonly local_version="$(/usr/libexec/PlistBuddy -c 'print version' "${local_info_plist}")"
-
-[[ -n "${local_version}" ]] || abort 'You need to set a workflow version in the configuration sheet.'
-[[ "${download_type}" =~ ^(direct|page|github_release)$ ]] || abort "'download_type' (${download_type}) needs to be one of 'direct', 'page', or 'github_release'."
-[[ "${frequency_check}" =~ ^[0-9]+$ ]] || abort "'frequency_check' (${frequency_check}) needs to be a number."
-
-# Check for updates
-if [[ $(find "${local_info_plist}" -mtime +"${frequency_check}"d) ]]; then
-  # Remote sanity check
-  if ! url_exists "${remote_info_plist}"; then
-    abort "'remote_info_plist' (${remote_info_plist}) appears to not be reachable."
-  fi
-
-  readonly tmp_file="$(mktemp)"
-  curl --silent --location --output "${tmp_file}" "${remote_info_plist}"
-  readonly remote_version="$(/usr/libexec/PlistBuddy -c 'print version' "${tmp_file}")"
-  rm "${tmp_file}"
-
-  if [[ "${local_version}" == "${remote_version}" ]]; then
-    touch "${local_info_plist}" # Reset timer by touching local file
-    exit 0
-  fi
-
-  if [[ "${download_type}" == 'page' ]]; then
-    notification 'Opening download page…'
-    open "${workflow_url}"
-    exit 0
-  fi
-
-  readonly download_url="$(
-    if [[ "${download_type}" == 'github_release' ]]; then
-      osascript -l JavaScript -e 'function run(argv) { return JSON.parse(argv[0])["assets"].find(asset =&gt; asset["browser_download_url"].endsWith(".alfredworkflow"))["browser_download_url"] }' "$(curl --silent "https://api.github.com/repos/${workflow_url}/releases/latest")"
-    else
-      echo "${workflow_url}"
-    fi
-  )"
-
-  if url_exists "${download_url}"; then
-    notification 'Downloading and installing…'
-    readonly download_name="$(basename "${download_url}")"
-    curl --silent --location --output "${HOME}/Downloads/${download_name}" "${download_url}"
-    open "${HOME}/Downloads/${download_name}"
-  else
-    abort "'workflow_url' (${download_url}) appears to not be reachable."
-  fi
-fi</string>
-				<key>scriptargtype</key>
-				<integer>1</integer>
-				<key>scriptfile</key>
-				<string></string>
-				<key>type</key>
-				<integer>0</integer>
-			</dict>
-			<key>type</key>
-			<string>alfred.workflow.action.script</string>
-			<key>uid</key>
-			<string>C4564BA3-C023-400E-AA4E-726CC734C91D</string>
-			<key>version</key>
-			<integer>2</integer>
 		</dict>
 		<dict>
 			<key>config</key>
@@ -278,11 +173,11 @@ fi</string>
 				<key>argumenttype</key>
 				<integer>2</integer>
 				<key>keyword</key>
-				<string>nsn</string>
+				<string>{var:new_notion_page_keyword}</string>
 				<key>subtext</key>
 				<string></string>
 				<key>text</key>
-				<string>Open a new page in Notion..</string>
+				<string>Create a new page in Notion…</string>
 				<key>withspace</key>
 				<false/>
 			</dict>
@@ -295,81 +190,89 @@ fi</string>
 		</dict>
 	</array>
 	<key>readme</key>
-	<string>New in 0.6:
-
-- Type ‘nsn’ for the option to quickly open a new page in Notion. Very handy! (Only supports the web app currently)
-
-- https://github.com/wrjlewis/notion-search-alfred-workflow/issues/83 - Fixed a bug that would cause an error and no more results to be displayed, relating to new Notion projects and icons.
-
-- I've added new cairo (SVG icons) instructions for those on apple silicon, to the readme at the projects github page, use at your own risk but they work for me and svg icons now appear in search results.
-
-https://github.com/wrjlewis/notion-search-alfred5-workflow/
-
---
-
-notion-search-alfred-workflow
-An Alfred workflow to search Notion.so with instant results
-
-Simply type your keyword into Alfred (default: ns) to see instant search results from Notion that mimic the Quick Find function in the Notion webapp. Selecting a search result takes you to that page in Notion in your default web browser.
-
-Documentation, install and instructions here:
-https://github.com/wrjlewis/notion-search-alfred5-workflow/
-
-Forum topic:
-https://www.alfredforum.com/topic/14451-notionso-instant-search-workflow/
-
-Thanks!</string>
+	<string></string>
 	<key>uidata</key>
 	<dict>
 		<key>6C10CCF8-8B6B-4F25-A9BD-1134E84378DB</key>
 		<dict>
 			<key>xpos</key>
-			<real>255</real>
+			<real>270</real>
 			<key>ypos</key>
-			<real>325</real>
+			<real>190</real>
 		</dict>
 		<key>7DD3BDE5-A157-42E5-9376-F681FB50A4EE</key>
 		<dict>
 			<key>xpos</key>
-			<real>30</real>
+			<real>45</real>
 			<key>ypos</key>
-			<real>100</real>
+			<real>50</real>
 		</dict>
 		<key>8083D292-1994-456E-AC9C-CCCFDDA3EF47</key>
 		<dict>
 			<key>xpos</key>
-			<real>65</real>
+			<real>45</real>
 			<key>ypos</key>
-			<real>485</real>
+			<real>340</real>
 		</dict>
 		<key>9C705833-7A87-43F9-8C8F-2485909F2D6A</key>
 		<dict>
 			<key>xpos</key>
-			<real>255</real>
+			<real>270</real>
 			<key>ypos</key>
-			<real>485</real>
-		</dict>
-		<key>C4564BA3-C023-400E-AA4E-726CC734C91D</key>
-		<dict>
-			<key>colorindex</key>
-			<integer>12</integer>
-			<key>note</key>
-			<string>OneUpdater</string>
-			<key>xpos</key>
-			<real>255</real>
-			<key>ypos</key>
-			<real>175</real>
+			<real>340</real>
 		</dict>
 		<key>FCE03E9D-F992-4B21-9A77-E72D5130DF80</key>
 		<dict>
 			<key>xpos</key>
-			<real>255</real>
+			<real>270</real>
 			<key>ypos</key>
 			<real>50</real>
 		</dict>
 	</dict>
 	<key>userconfigurationconfig</key>
 	<array>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>default</key>
+				<string>not</string>
+				<key>placeholder</key>
+				<string></string>
+				<key>required</key>
+				<false/>
+				<key>trim</key>
+				<true/>
+			</dict>
+			<key>description</key>
+			<string>Keyword to search in your Notion workspace</string>
+			<key>label</key>
+			<string>Search Keyword</string>
+			<key>type</key>
+			<string>textfield</string>
+			<key>variable</key>
+			<string>notion_search_keyword</string>
+		</dict>
+		<dict>
+			<key>config</key>
+			<dict>
+				<key>default</key>
+				<string>newnot</string>
+				<key>placeholder</key>
+				<string></string>
+				<key>required</key>
+				<false/>
+				<key>trim</key>
+				<true/>
+			</dict>
+			<key>description</key>
+			<string>Keyword to create a new Notion page.</string>
+			<key>label</key>
+			<string>New Page Keyword</string>
+			<key>type</key>
+			<string>textfield</string>
+			<key>variable</key>
+			<string>new_notion_page_keyword</string>
+		</dict>
 		<dict>
 			<key>config</key>
 			<dict>
@@ -420,12 +323,12 @@ Thanks!</string>
 				<key>required</key>
 				<false/>
 				<key>text</key>
-				<string>If unchecked, allows searching objects within a page</string>
+				<string></string>
 			</dict>
 			<key>description</key>
-			<string></string>
+			<string>Restricts search to only include pages, excluding content within pages.</string>
 			<key>label</key>
-			<string>Navigable Only</string>
+			<string>Search Pages Only</string>
 			<key>type</key>
 			<string>checkbox</string>
 			<key>variable</key>
@@ -439,12 +342,12 @@ Thanks!</string>
 				<key>required</key>
 				<false/>
 				<key>text</key>
-				<string>If checked, open links in the desktop app</string>
+				<string></string>
 			</dict>
 			<key>description</key>
-			<string></string>
+			<string>Opens Notion links in the desktop app instead of the browser.</string>
 			<key>label</key>
-			<string>Use Desktop Client</string>
+			<string>Open in Desktop App</string>
 			<key>type</key>
 			<string>checkbox</string>
 			<key>variable</key>
@@ -458,12 +361,12 @@ Thanks!</string>
 				<key>required</key>
 				<false/>
 				<key>text</key>
-				<string>Show Notion icons natively in search results</string>
+				<string></string>
 			</dict>
 			<key>description</key>
-			<string></string>
+			<string>Displays icons for pages and other objects in search results.</string>
 			<key>label</key>
-			<string>Enable Icons</string>
+			<string>Show Icons</string>
 			<key>type</key>
 			<string>checkbox</string>
 			<key>variable</key>
@@ -477,12 +380,12 @@ Thanks!</string>
 				<key>required</key>
 				<false/>
 				<key>text</key>
-				<string>Show recently viewed pages when no query provided</string>
+				<string></string>
 			</dict>
 			<key>description</key>
-			<string></string>
+			<string>Displays recently viewed pages when the search query is empty.</string>
 			<key>label</key>
-			<string>Show Recently Viewed</string>
+			<string>Show Recent Pages</string>
 			<key>type</key>
 			<string>checkbox</string>
 			<key>variable</key>
@@ -501,19 +404,17 @@ Thanks!</string>
 				<true/>
 			</dict>
 			<key>description</key>
-			<string></string>
+			<string>Defines the number of days for icons and images to be cached.</string>
 			<key>label</key>
-			<string>Icon Cache Days</string>
+			<string>Icon Cache Length</string>
 			<key>type</key>
 			<string>textfield</string>
 			<key>variable</key>
 			<string>iconCacheDays</string>
 		</dict>
 	</array>
-	<key>variablesdontexport</key>
-	<array/>
 	<key>version</key>
-	<string>0.6-alfred5</string>
+	<string>0.7</string>
 	<key>webaddress</key>
 	<string>https://github.com/wrjlewis/notion-search-alfred5-workflow/</string>
 </dict>

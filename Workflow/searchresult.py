@@ -5,6 +5,7 @@ class SearchResult(object):
         self._icon = None
         self._link = None
         self._subtitle = None
+        self._type = None
 
     @property
     def id(self):
