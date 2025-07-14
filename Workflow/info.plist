@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>bundleid</key>
-	<string>com.may-june-july.notion-search</string>
+	<string>com.wrjlewis.notion-search</string>
 	<key>category</key>
 	<string>Internet</string>
 	<key>connections</key>
@@ -48,7 +48,7 @@
 		<array/>
 	</dict>
 	<key>createdby</key>
-	<string>May June July</string>
+	<string>Will Lewis</string>
 	<key>description</key>
 	<string>Instant Notion search</string>
 	<key>disabled</key>
