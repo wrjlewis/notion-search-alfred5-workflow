@@ -1,2 +1,3 @@
 .DS_Store
 Workflow/prefs.plist
+Workflow/__pycache__/
