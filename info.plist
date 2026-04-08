@@ -295,13 +295,10 @@ fi</string>
 		</dict>
 	</array>
 	<key>readme</key>
-	<string>New in 0.6:
+	<string>New in 0.6.1:
 
-- Type ‘nsn’ for the option to quickly open a new page in Notion. Very handy! (Only supports the web app currently)
-
-- https://github.com/wrjlewis/notion-search-alfred-workflow/issues/83 - Fixed a bug that would cause an error and no more results to be displayed, relating to new Notion projects and icons.
-
-- I've added new cairo (SVG icons) instructions for those on apple silicon, to the readme at the projects github page, use at your own risk but they work for me and svg icons now appear in search results.
+- Updates the workflow to reflect a change in Notion's internal API recently, which was causing results to not be displayed correctly or at all.
+- There will no updates to the Alfred4 version of this workflow, I can only provide enough time to update the Alfred5 workflow in future (which hopefully most people are on now anyway). 
 
 https://github.com/wrjlewis/notion-search-alfred5-workflow/
 
@@ -513,7 +510,7 @@ Thanks!</string>
 	<key>variablesdontexport</key>
 	<array/>
 	<key>version</key>
-	<string>0.6-alfred5</string>
+	<string>0.6.1</string>
 	<key>webaddress</key>
 	<string>https://github.com/wrjlewis/notion-search-alfred5-workflow/</string>
 </dict>
